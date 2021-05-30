@@ -1,0 +1,70 @@
+.todoinput {
+  margin-top: 20px;
+
+  &__form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 2.2rem;
+    background-color: var(--content-bg);
+    gap: 2.6rem;
+
+    @include responsive {
+      padding: 1.6rem;
+      gap: 1.6rem;
+    }
+  }
+  &__textbox {
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    border: none;
+    padding-top: 0.25rem;
+    background-color: var(--content-bg);
+    color: var(--clr-todo-item);
+    &::placeholder {
+      color: var(--clr-todo-item);
+    }
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__label {
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    // border: 2px solid $light-grayish-blue;
+
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative;
+    &::after {
+      content: url(../../assets/icon-check.svg);
+      @include centerWithPosAbs;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.todoinput__checkbox:checked ~ .todoinput__label {
+  border: 2px solid transparent;
+  background-image: linear-gradient(
+    to right,
+    $check-bg-grad-1,
+    $check-bg-grad-2
+  );
+  background-size: 150%;
+  background-position: center;
+}
+
+.todoinput__checkbox:checked ~ .todoinput__label::after {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,0 +1,34 @@
+.checkbox {
+  display: none;
+  &-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    border: 2px solid $light-grayish-blue;
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative;
+    &::after {
+      content: url(../../assets/icon-check.svg);
+      @include centerWithPosAbs;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.checkbox:checked ~ .checkbox-icon {
+  border: 2px solid transparent;
+  background-image: linear-gradient(
+    to right,
+    $check-bg-grad-1,
+    $check-bg-grad-2
+  );
+  background-size: 150%;
+  background-position: center;
+}
+
+.checkbox:checked ~ .checkbox-icon::after {
+  opacity: 1;
+  visibility: visible;
+}

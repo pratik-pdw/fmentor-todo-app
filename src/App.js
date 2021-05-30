@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import CenterBox from "./components/CenterBox";
+import Header from "./components/Header";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
+import "./sass/main.scss";
+import { TodosProvider } from "./context/TodosContext";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="site" theme="light">
+      <TodosProvider>
+        <CenterBox>
+          <Header />
+          <TodoInput />
+          <TodoList />
+        </CenterBox>
+      </TodosProvider>
     </div>
   );
 }

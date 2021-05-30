@@ -1,0 +1,15 @@
+.site {
+  background-repeat: no-repeat;
+  background-size: 100vw 300px;
+  background-position: top;
+  height: 100%;
+  position: relative;
+  background-image: var(--bg-image);
+  background-color: var(--bg-color);
+  //   overflow-y: auto;
+
+  @include responsive {
+    background-image: var(--bg-image-mb);
+    background-size: 100vw 250px;
+  }
+}

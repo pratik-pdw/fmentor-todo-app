@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: "Josefin Sans", sans-serif;
+
+  @include responsive {
+    font-size: 1.6rem;
+  }
+}

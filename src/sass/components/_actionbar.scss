@@ -1,0 +1,64 @@
+.actionbar {
+  @include centerChildrenWithFlex;
+  padding: 1.8rem 2.4rem;
+  font-size: 1.5rem;
+  justify-content: space-between;
+  color: var(--clr-darkGrayishBlue);
+
+  position: relative;
+
+  @include responsive {
+    position: relative;
+  }
+
+  button {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    color: var(--clr-darkGrayishBlue);
+
+    &:hover {
+      color: var(--clr-todo-item);
+    }
+  }
+
+  &__action {
+    font-weight: 700;
+    margin-left: 1.8rem;
+
+    @include responsive {
+      margin-left: 0px;
+    }
+  }
+
+  &__statuses {
+    @include responsive {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      @include centerChildrenWithFlex;
+      left: 0px;
+      bottom: -8.8rem;
+      gap: 1.8rem;
+      background-color: var(--content-bg);
+      border-radius: 5px;
+    }
+  }
+
+  &::after {
+    content: "Drag and drop to reorder the list";
+    @include centerWithPosAbs;
+    width: 100%;
+    display: inline-block;
+    top: 100px;
+    text-align: center;
+
+    @include responsive {
+      top: 200px;
+    }
+  }
+}

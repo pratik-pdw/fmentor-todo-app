@@ -1,0 +1,19 @@
+.header {
+  @include centerChildrenWithFlex;
+
+  &__title {
+    color: $very-light-gray;
+    letter-spacing: 1.4rem;
+    flex-grow: 1;
+  }
+
+  &__toggle {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    &::after {
+      content: var(--icon-toggle);
+    }
+  }
+}

@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+#root {
+  height: inherit;
+}
+
+html.transition *,
+html.transition *::after,
+html.transition *::before {
+  transition: all 0.6s;
+}

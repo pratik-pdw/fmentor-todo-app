@@ -1,0 +1,55 @@
+.todolist {
+  list-style: none;
+  background-color: var(--content-bg);
+  margin-top: 2.4rem;
+  border-radius: 5px;
+
+  &__item {
+    display: flex;
+    gap: 2.6rem;
+    padding: 2.2rem;
+    color: var(--clr-todo-item);
+    border-bottom: 1px solid var(--clr-border);
+    cursor: pointer;
+
+    @include responsive {
+      padding: 1.6rem;
+      gap: 1.6rem;
+    }
+
+    &-description {
+      flex-grow: 1;
+    }
+
+    &-delete {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      cursor: pointer;
+      position: relative;
+      width: 2.8rem;
+      height: 2.8rem;
+      opacity: 0;
+
+      @include responsive {
+        opacity: 1;
+      }
+
+      &::after {
+        @include centerWithPosAbs;
+        content: url(../../assets/icon-cross.svg);
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &:hover &-delete {
+      opacity: 1;
+    }
+  }
+}
+
+.striked {
+  text-decoration: line-through;
+  color: var(--clr-striked);
+}
