@@ -4,6 +4,7 @@
   margin-top: 2.4rem;
   border-radius: 5px;
   min-height: 100%;
+  overflow: hidden;
   &__item {
     display: flex;
     gap: 2.6rem;
@@ -13,7 +14,7 @@
     border-bottom: 1px solid var(--clr-border);
     cursor: pointer;
     align-items: center;
-    border-radius: 5px;
+    // border-radius: 5px;
 
     @include responsive {
       padding: 1.6rem;
@@ -63,4 +64,9 @@
 .striked {
   text-decoration: line-through;
   color: var(--clr-striked);
+}
+
+.dragging {
+  border-radius: 5px;
+  border-bottom: 1px solid transparent;
 }

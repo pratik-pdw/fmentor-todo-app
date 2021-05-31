@@ -44,14 +44,14 @@ function TodoList() {
               {todos.map((todo, index) => {
                 return (
                   <Draggable key={todo.id} draggableId={todo.id} index={index}>
-                    {(provided) => (
+                    {(provided, snapshot) => (
                       <li
                         {...provided.draggableProps}
                         ref={provided.innerRef}
                         {...provided.dragHandleProps}
                         className={`todolist__item ${
                           todo.completed ? "striked" : ""
-                        }`}
+                        } ${snapshot.isDragging ? "dragging" : ""}`}
                       >
                         <input
                           checked={todo.completed}
