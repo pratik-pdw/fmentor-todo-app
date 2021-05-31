@@ -1,17 +1,19 @@
 .site {
   background-repeat: no-repeat;
-  background-size: 100vw 300px;
+  background-size: 100vw 300px, 100vw 100vh;
   background-position: top;
   height: 100%;
   // position: relative;
-  background-image: var(--bg-image);
-  background-color: var(--bg-color);
+  background-image: var(--bg-image),
+    linear-gradient(var(--bg-color), var(--bg-color));
+  // background-color: var(--bg-color);
   //   overflow-y: auto;
 
   @include centerChildrenWithFlex;
   align-items: flex-start;
   @include responsive {
-    background-image: var(--bg-image-mb);
-    background-size: 100vw 250px;
+    background-image: var(--bg-image-mb),
+      linear-gradient(var(--bg-color), var(--bg-color));
+    background-size: 100vw 250px, 100vw 100vh;
   }
 }

@@ -8,7 +8,7 @@ import { TodosProvider } from "./context/TodosContext";
 import { StatusProvider } from "./context/StatusContext";
 function App() {
   return (
-    <div className="site" theme="light">
+    <div className="site">
       <StatusProvider>
         <TodosProvider>
           <CenterBox>
