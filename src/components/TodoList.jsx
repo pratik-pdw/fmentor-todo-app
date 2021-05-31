@@ -1,14 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import ActionBar from "./ActionBar";
 
 import { TodosContext } from "../context/TodosContext";
-import { StatusContext } from "../context/StatusContext";
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function TodoList() {
   const [todos, setTodos] = useContext(TodosContext);
-  const [status] = useContext(StatusContext);
 
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
