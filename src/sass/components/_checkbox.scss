@@ -8,12 +8,6 @@
     flex-shrink: 0;
     cursor: pointer;
     position: relative;
-    &::after {
-      content: url(../../assets/icon-check.svg);
-      @include centerWithPosAbs;
-      opacity: 0;
-      visibility: hidden;
-    }
 
     @include responsive {
       width: 20px;
@@ -24,16 +18,9 @@
 
 .checkbox:checked ~ .checkbox-icon {
   border: 2px solid transparent;
-  background-image: linear-gradient(
-    to right,
-    $check-bg-grad-1,
-    $check-bg-grad-2
-  );
-  background-size: 150%;
+  background-image: url(../../assets/icon-check.svg),
+    linear-gradient(to right, $check-bg-grad-1, $check-bg-grad-2);
+  background-size: 60%, 150%;
+  background-repeat: no-repeat, repeat;
   background-position: center;
-}
-
-.checkbox:checked ~ .checkbox-icon::after {
-  opacity: 1;
-  visibility: visible;
 }
