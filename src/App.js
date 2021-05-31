@@ -9,15 +9,15 @@ import { StatusProvider } from "./context/StatusContext";
 function App() {
   return (
     <div className="site" theme="light">
-      <TodosProvider>
-        <StatusProvider>
+      <StatusProvider>
+        <TodosProvider>
           <CenterBox>
             <Header />
             <TodoInput />
             <TodoList />
           </CenterBox>
-        </StatusProvider>
-      </TodosProvider>
+        </TodosProvider>
+      </StatusProvider>
     </div>
   );
 }

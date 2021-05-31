@@ -3,15 +3,18 @@
   background-color: var(--content-bg);
   margin-top: 2.4rem;
   border-radius: 5px;
-
+  min-height: 100%;
   &__item {
     display: flex;
     gap: 2.6rem;
     padding: 2.2rem;
+    background-color: var(--content-bg);
     color: var(--clr-todo-item);
     border-bottom: 1px solid var(--clr-border);
     cursor: pointer;
     align-items: center;
+    border-radius: 5px;
+    position: static !important;
     @include responsive {
       padding: 1.6rem;
       gap: 1.6rem;
@@ -19,6 +22,7 @@
 
     &-description {
       flex-grow: 1;
+      cursor: pointer;
     }
 
     &-delete {

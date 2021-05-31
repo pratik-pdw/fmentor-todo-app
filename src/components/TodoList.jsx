@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ActionBar from "./ActionBar";
 
 import { TodosContext } from "../context/TodosContext";
 import { StatusContext } from "../context/StatusContext";
+
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function TodoList() {
   const [todos, setTodos] = useContext(TodosContext);
@@ -21,50 +23,78 @@ function TodoList() {
     setTodos(todosToUpdate);
   };
 
-  let filteredTodos = [];
+  // const [listTodos, setListTodos] = useState(todos);
 
-  if (status === "all") {
-    filteredTodos = todos;
-  } else if (status === "active") {
-    filteredTodos = todos.filter((todo) => !todo.completed);
-  } else if (status === "completed") {
-    filteredTodos = todos.filter((todo) => todo.completed);
-  }
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+    const items = Array.from(todos);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setTodos(items);
+  };
 
   return (
-    <ul className="todolist">
-      {filteredTodos.map((todo) => {
-        return (
-          <li
-            onClick={() => {
-              toggleCompletion(todo.id);
-            }}
-            className={`todolist__item ${todo.completed ? "striked" : ""}`}
-            key={todo.id}
-          >
-            <input
-              checked={todo.completed}
-              id={todo.id}
-              className="checkbox"
-              type="checkbox"
-              onChange={() => {
-                toggleCompletion(todo.id);
-              }}
-            />
-            <label className="checkbox-icon" htmlFor={todo.id}></label>
-            <p className="todolist__item-description">{todo.description}</p>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteTodo(todo.id);
-              }}
-              className="todolist__item-delete"
-            ></button>
-          </li>
-        );
-      })}
-      <ActionBar />
-    </ul>
+    <>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="todolist">
+          {(provided) => (
+            <ul
+              className="todolist"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {todos.map((todo, index) => {
+                return (
+                  <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                    {(provided) => (
+                      <li
+                        {...provided.draggableProps}
+                        ref={provided.innerRef}
+                        {...provided.dragHandleProps}
+                        className={`todolist__item ${
+                          todo.completed ? "striked" : ""
+                        }`}
+                      >
+                        <input
+                          checked={todo.completed}
+                          id={todo.id}
+                          className="checkbox"
+                          type="checkbox"
+                          onChange={() => {
+                            toggleCompletion(todo.id);
+                          }}
+                        />
+                        <label
+                          className="checkbox-icon"
+                          htmlFor={todo.id}
+                        ></label>
+                        <p
+                          onClick={() => {
+                            toggleCompletion(todo.id);
+                          }}
+                          className="todolist__item-description"
+                        >
+                          {todo.description}
+                        </p>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            deleteTodo(todo.id);
+                          }}
+                          className="todolist__item-delete"
+                        ></button>
+                      </li>
+                    )}
+                  </Draggable>
+                );
+              })}
+              {provided.placeholder}
+              <ActionBar />
+            </ul>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </>
   );
 }
 

@@ -1,5 +1,8 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 import { nanoid } from "nanoid";
+
+import { StatusContext } from "./StatusContext";
+
 export const TodosContext = createContext();
 
 export const TodosProvider = (props) => {
@@ -15,8 +18,20 @@ export const TodosProvider = (props) => {
     },
   ]);
 
+  const [status] = useContext(StatusContext);
+  let filteredTodos = [];
+
+  if (status === "all") {
+    filteredTodos = todos;
+  }
+  if (status === "active") {
+    filteredTodos = todos.filter((todo) => !todo.completed);
+  } else if (status === "completed") {
+    filteredTodos = todos.filter((todo) => todo.completed);
+  }
+
   return (
-    <TodosContext.Provider value={[todos, setTodos]}>
+    <TodosContext.Provider value={[filteredTodos, setTodos]}>
       {props.children}
     </TodosContext.Provider>
   );
