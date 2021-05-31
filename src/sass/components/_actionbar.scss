@@ -29,7 +29,7 @@
   &__action {
     font-weight: 700;
     margin-left: 1.8rem;
-
+    text-transform: capitalize;
     @include responsive {
       margin-left: 0px;
     }
@@ -61,4 +61,8 @@
       top: 200px;
     }
   }
+}
+
+.active {
+  color: $bright-blue !important;
 }

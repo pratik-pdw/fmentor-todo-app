@@ -5,15 +5,18 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import "./sass/main.scss";
 import { TodosProvider } from "./context/TodosContext";
+import { StatusProvider } from "./context/StatusContext";
 function App() {
   return (
     <div className="site" theme="light">
       <TodosProvider>
-        <CenterBox>
-          <Header />
-          <TodoInput />
-          <TodoList />
-        </CenterBox>
+        <StatusProvider>
+          <CenterBox>
+            <Header />
+            <TodoInput />
+            <TodoList />
+          </CenterBox>
+        </StatusProvider>
       </TodosProvider>
     </div>
   );

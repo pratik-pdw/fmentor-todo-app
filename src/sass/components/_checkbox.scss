@@ -14,6 +14,11 @@
       opacity: 0;
       visibility: hidden;
     }
+
+    @include responsive {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 

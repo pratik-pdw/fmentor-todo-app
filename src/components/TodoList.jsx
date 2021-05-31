@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import ActionBar from "./ActionBar";
 
 import { TodosContext } from "../context/TodosContext";
+import { StatusContext } from "../context/StatusContext";
 
 function TodoList() {
   const [todos, setTodos] = useContext(TodosContext);
+  const [status] = useContext(StatusContext);
 
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -19,9 +21,19 @@ function TodoList() {
     setTodos(todosToUpdate);
   };
 
+  let filteredTodos = [];
+
+  if (status === "all") {
+    filteredTodos = todos;
+  } else if (status === "active") {
+    filteredTodos = todos.filter((todo) => !todo.completed);
+  } else if (status === "completed") {
+    filteredTodos = todos.filter((todo) => todo.completed);
+  }
+
   return (
     <ul className="todolist">
-      {todos.map((todo) => {
+      {filteredTodos.map((todo) => {
         return (
           <li
             onClick={() => {
