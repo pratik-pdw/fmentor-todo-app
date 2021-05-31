@@ -1,9 +1,9 @@
 .center-box {
-  position: absolute;
   width: 568px;
-  left: 50%;
-  top: 68px;
-  transform: translateX(-50%);
+  // position: absolute;
+  // left: 50%;
+  margin-top: 68px;
+  // transform: translateX(-50%);
 
   @include responsive {
     width: 90%;
